@@ -1,4 +1,5 @@
 name: Sync to Databricks Workspace
+# Triggering sync after permission fix
 
 on:
   push:

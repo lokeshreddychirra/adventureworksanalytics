@@ -1,0 +1,28 @@
+name: Sync to Databricks Workspace
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_CLIENT_ID: ${{ secrets.DATABRICKS_CLIENT_ID }}
+      DATABRICKS_CLIENT_SECRET: ${{ secrets.DATABRICKS_CLIENT_SECRET }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Databricks CLI
+        uses: databricks/setup-cli@main
+
+      - name: Update Databricks Git Folder
+        run: |
+          # Updates the Git folder (Repo) in Databricks to the latest commit on the main branch
+          # Ensure the path matches your Databricks workspace path exactly.
+          databricks repos update --path /home/adventureworksanalytics --branch main

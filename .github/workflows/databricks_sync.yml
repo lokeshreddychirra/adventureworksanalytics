@@ -26,4 +26,4 @@ jobs:
         run: |
           # Updates the Git folder (Repo) in Databricks to the latest commit on the main branch
           # Ensure the path matches your Databricks workspace path exactly.
-          databricks repos update /Users/clokeshreddy@gmail.com/adventureworksanalytics --branch main
+          databricks repos update /Repos/clokeshreddy@gmail.com/adventureworksanalytics --branch main

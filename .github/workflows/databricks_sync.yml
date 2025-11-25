@@ -26,5 +26,5 @@ jobs:
         run: |
           # Updates the Git folder (Repo) in Databricks to the latest commit on the main branch
           # Ensure the path matches your Databricks workspace path exactly.
-          databricks repos list
-          databricks repos update 2196458325416517 --branch main
+          # Try to update the repo, if it fails (e.g. doesn't exist), create it
+          databricks repos update /Repos/adventureworksagent/adventureworksanalytics --branch main || databricks repos create https://github.com/lokeshreddychirra/adventureworksanalytics.git --path /Repos/adventureworksagent/adventureworksanalytics

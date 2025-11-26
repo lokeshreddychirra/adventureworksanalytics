@@ -35,5 +35,5 @@ jobs:
           echo "Listing /:"
           databricks workspace list / || echo "Failed to list /"
 
-          # Try to update the repo, if it fails (e.g. doesn't exist), create it
-          databricks repos update /Repos/adventureworksagent/adventureworksanalytics --branch main || databricks repos create https://github.com/lokeshreddychirra/adventureworksanalytics.git --path /Repos/adventureworksagent/adventureworksanalytics
+          # Try to update the repo in /Shared, if it fails (e.g. doesn't exist), create it
+          databricks repos update /Shared/adventureworksanalytics --branch main || databricks repos create https://github.com/lokeshreddychirra/adventureworksanalytics.git --path /Shared/adventureworksanalytics

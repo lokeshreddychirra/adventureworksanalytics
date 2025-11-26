@@ -29,8 +29,11 @@ jobs:
           # Debug: Check who we are authenticated as
           databricks auth describe
 
-          # Ensure the parent directory exists
-          databricks workspace mkdirs /Repos/adventureworksagent
+          # Debug: List directories to find a valid path
+          echo "Listing /Repos:"
+          databricks workspace list /Repos || echo "Failed to list /Repos"
+          echo "Listing /:"
+          databricks workspace list / || echo "Failed to list /"
 
           # Try to update the repo, if it fails (e.g. doesn't exist), create it
           databricks repos update /Repos/adventureworksagent/adventureworksanalytics --branch main || databricks repos create https://github.com/lokeshreddychirra/adventureworksanalytics.git --path /Repos/adventureworksagent/adventureworksanalytics
